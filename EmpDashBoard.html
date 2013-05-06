@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <title>&nbsp;</title>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="cordova/cordova.js"></script>
+		<script>
+		
+		document.addEventListener("deviceready", onDeviceReady, false);
+ 			function onDeviceReady() {
+		    $.ajax({
+				url : 	"https://bssqa1.tallysolutions.com/isrel45_00/modules/hrms/intranet/reports/GetCount.php",
+				data : {
+							strUserEventID:100,
+							strEmpId : 33
+							
+					    },
+				beforeSend : function(){
+					$.mobile.loading( 'show');
+				},
+				error : function(){
+					alert("Error occured");
+				},
+				success : function(data){
+					console.log(data);
+					data = eval(data);
+					$(".SelfApprPendingCount").html(data[1]);
+					$(".SelfFeedbackPendingSub").html(data[2]);
+					$(".ClassMyAppraisalPending").html( data[1] + data[2] );
+					
+					// For Colleague
+$(".ClgPendingAppraisal")     .html(data[3]);
+$(".ClgPendingCoAppraisal")   .html(data[4]);
+$(".ClgPendingRatification")  .html(data[5]);
+$(".ClgPendingAudit")         .html(data[6]);
+$(".ClgPendingSelfObjReiew")  .html(data[7]);
+$(".ClgPendingCitationReview").html(data[8]);
+$(".ClgPendingSbcApproval")   .html(data[9]);
+$(".ClgPendingLeaveApproval") .html(data[10]);
+$(".ClgPendingTripApproval")  .html(data[11]);
+
+$(".ClassPendingMyAppraisalAppr").html(data[3]+data[4]+data[5]+data[6]+data[7]+data[8]+data[9]+data[10]+data[11]);
+/*					
+WorkStreamsSponsorCount']       0
+SelfAppraisalPendingSubmission  1
+SelfFeedbackPendingSubmission'  2
+ClgAppraisalPendingAppraisal']  3
+ClgCoAppraisalPending']         4
+ClgRatificationPending']        5
+ClgAuditPending']               6
+ClgSelfObjPendingReview']       7
+ClgCitationPendingReview']      8
+ClgSBCPendingApproval']         9
+ClgLeavePendingApproval']       10
+ClgTripPendingApproval']        11
+SelfClaimPendingSubmission']    12
+
+			*/		
+					//var dashBoardData = eval(data);
+					//console.log(dashBoardData );
+					$.mobile.loading( 'hide');
+					
+				} 
+		
+		          });
+	          }
+		</script>
+		
+
+</script>
+		 
+		<style>
+			.ui-footer 
+			{
+ 			    position: absolute !important;
+   			    bottom: 0;
+    			width: 100%;
+			}
+			.CountDiv
+			{
+				
+			}
+			.PendingCount
+			{
+				color : red;
+				font-weight:bold;
+				margin-right : 5px;
+			}
+			.SuccessCount
+			{
+				color : green;
+				font-weight:bold;
+				margin-right : 5px;
+			}
+			.TotalCount
+			{
+				color : black;
+				font-weight:bold;
+				margin-right : 5px;
+			}
+			.ClassPendingCount
+			{
+				color : white;
+				background : red;
+				font-weight : bold;
+				padding : 2px;
+				border-radius : 10px;
+				
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+			
+		<div data-role="page" id="page1">
+			
+			<div data-role="header">
+				<a href="javascript:void(0)" data-role="button" data-icon="back" data-iconpos="notext" data-rel="back" data-ajax="false"></a>
+				<h1>Employee Dashboard</h1>
+				<a href="TallyESSMenu.html" data-role="button" data-icon="home" data-iconpos="notext" ></a>
+				
+
+			</div>
+			
+			<div data-role="collapsible-set" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+
+	<div data-role="collapsible" data-collapsed="false">
+	<h3><span class="ClassPendingCount ClassMyAppraisalPending">00</span> My Appraisals</h3>
+		<div class="CountDiv">
+			Pending Submission : <span class="SelfApprPendingCount">0</span>
+			Pending Feedback Submission : <span class="SelfFeedbackPendingSub">0</span>
+			Trip Claim Pending Submission  : <span class="SelfClaimPendingSub">0</span>
+		</div>	
+	</div>
+	
+	<div data-role="collapsible">
+	<h3><span class="ClassPendingCount ClassPendingMyAppraisalAppr">00</span> My Applications Pending Appraisal</h3>
+	<div>
+Pending For Appraisal :      	<div class="ClgPendingAppraisal"></div>
+Pending For Co-Appraisal:    	<div class="ClgPendingCoAppraisal"></div>
+Pending For Ratification :   	<div class="ClgPendingRatification"></div>
+Pending For Audit : 		 	<div class="ClgPendingAudit"></div>
+Self-Objective Oending Review : <div class="ClgPendingSelfObjReiew"></div>
+Citation Pending Review : 		<div class="ClgPendingCitationReview"></div>
+SBC Pending Approval : 			<div class="ClgPendingSbcApproval"></div>
+Leave Pending Approval : 		<div class="ClgPendingLeaveApproval"></div>
+Trip/Claim Pending Approval :   <div class="ClgPendingTripApproval"></div>
+
+			
+	</div>
+	<p>I'm the collapsible set content for section 2.</p>
+	</div>
+	
+	<div data-role="collapsible">
+	<h3><span class="ClassPendingCount ClassMyClgAppraisal">00</span> My Colleagues Appraisals</h3>
+	<p>No Data</p>
+	</div>
+	<div data-role="collapsible">
+	<h3><span class="ClassPendingCount ClassMyClgApplicationCount">00</span> My Colleagues Applications</h3>
+	<p>I'm the collapsible set content for section 2.</p>
+	</div>
+	
+	<div data-role="collapsible">
+	<h3><span class="ClassMyInOutTiming">00</span> In-Out Timing</h3>
+	<p>I'm the collapsible set content for section 2.</p>
+	</div>
+	
+		</div>
+			
+			<div data-role="footer">
+				<h4>&copy; 2013 Tally</h4>
+			</div>
+			
+		</div>
+		
+
+	</body>
+</html>
+
