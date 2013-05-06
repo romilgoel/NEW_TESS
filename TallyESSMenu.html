@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <title>&nbsp;</title>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		<!--<script type="text/javascript" charset="utf-8" src="cordova/cordova.js"></script> -->
+		<style>
+			.ui-footer 
+			{
+ 			    position: absolute !important;
+   			    bottom: 0;
+    			width: 100%;
+			}
+			.ui-grid-a
+			{
+				line-height:3;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<!-- Start of first page I -->
+		<div data-role="page" id="page1">
+			<!-- Header -->
+			<div data-role="header">
+				<a href="javascript:void(0)" data-role="button" data-icon="back" data-iconpos="notext" data-rel="back" data-ajax="false"></a>
+				<h1>Employee Dashboard</h1>
+				<a href="TallyESSMenu.html" data-role="button" data-icon="home" data-iconpos="notext" ></a>
+				
+
+			</div>
+			
+			<div style="position:absolute; margin-top:auto; width:100%; top:15%;">
+			
+			<div class="ui-grid-solo">
+		           <div class="ui-block-a">
+		           		<a href="EmpDashBoard.html" data-role="button" data-transition="fade" data-theme='a'  data-icon="grid" data-ajax="false">Dashboard</a>
+		           </div>
+			</div>	
+			<div class="ui-grid-solo">
+		           <div class="ui-block-a">
+		           		<a data-role="button" data-theme='a' style="height:100%;"  data-icon="grid">Task</a>
+		           </div>
+		    </div>
+		    <div class="ui-grid-solo">
+		           <div class="ui-block-a">
+		           		<a class="directoryClass" data-role="button" data-theme='a'  data-icon="grid" data-ajax="false">Directory</a>
+		           </div>
+		    </div>
+		    <div class="ui-grid-solo">
+		           <div class="ui-block-a">
+		           		<a data-role="button" data-theme='a'  data-icon="grid">Applications</a>
+		           </div>
+			</div>
+			<div class="ui-grid-solo">
+		           <div class="ui-block-a">
+		           		<a href="searchEmployee/seachEmp.html" data-role="button" data-theme='a'  data-icon="search" data-ajax="false">Employee Search</a>
+		           </div>
+		    </div>
+		    <div class="ui-grid-solo">
+		           <div class="ui-block-a">
+		           		<a data-role="button" data-theme='a'  data-icon="grid">Leave</a>
+		           </div>
+			</div>
+			<div class="ui-grid-solo">
+		           <div class="ui-block-a">
+		           		<a data-role="button" data-theme='a'  data-icon="grid">Birthdays</a>
+		           </div>
+			</div>
+			<div class="ui-grid-solo">
+		           <div class="ui-block-a">
+		           		<a data-role="button" data-theme='a'  data-icon="grid">Misc.</a>
+		           </div> 
+		    </div>
+			</div>
+			
+			<!-- /footer -->
+		</div>
+		<!-- /page -->
+	</body>
+</html>
+
+</script>
