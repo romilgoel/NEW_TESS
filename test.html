@@ -10,6 +10,44 @@
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 		<script type="text/javascript" charset="utf-8" src="cordova/cordova.js"></script>
+		<script>
+		var reqTimelag = 0;
+		var AllEmpNames ;
+		document.addEventListener("deviceready", onDeviceReady, false);
+		
+	function onDeviceReady() {
+		$.ajax({
+				url : 	"https://bssqa1.tallysolutions.com/isrel45_00/modules/hrms/intranet/reports/GetCount.php",
+				data : {
+							strUserEventID:101
+							
+					    },
+				beforeSend : function(){
+					$.mobile.loading( 'show');
+				},
+				error : function(){
+					alert("Error occured");
+				},
+				success : function(data){
+					console.log(data );
+					AllEmpNames = eval(data);
+					console.log(AllEmpNames );
+					
+					
+					var str= "";
+					for(var i = 0; i < AllEmpNames.length; i++ )
+					{
+						str += "<li data-filtertext='"+AllEmpNames[i][0]+"'><a href='#page2' class='classEmpList'>"+AllEmpNames[i][0]+"</a><input type='hidden' value='"+AllEmpNames[i][1]+"'/></li>";	
+					}
+					$(".EmpList").html(str);
+					$('.EmpList').listview('refresh');
+					$.mobile.loading( 'hide');
+					
+				} 
+		
+		          });
+	}
+	</script>
 	</head>
 <body>
 <div data-role="page" id="page1">
