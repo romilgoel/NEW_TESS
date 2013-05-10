@@ -47,6 +47,52 @@
 		
 		          });
 	}
+	
+	$(".classEmpList").live("click",function(){
+					//$(".spanEmpName").html($(this).next().val());
+					
+			 $.ajax({
+				url : 	"https://bssqa1.tallysolutions.com/isrel45_00/modules/hrms/intranet/reports/GetCount.php",
+				data : {
+							strUserEventID:102,
+							strEmpId : $(this).next().val()
+					    },
+				beforeSend : function(){
+					$.mobile.loading('show');
+							$(".spanEmpName")      .html("");
+							$(".spanEmpId")        .html("");
+							$(".spanEmpGender")    .html("");
+							$(".spanEmpGrade")     .html("");
+							$(".spanEmpDepartment").html("");
+							$(".spanEmpTitle")	   .html("");
+							$(".spanEmpLocation")  .html("");
+							$(".spanEmpMobile")    .html("");
+							$(".spanEmpEmail")     .html("");
+				},
+				error : function(){
+					alert("Error occured");
+				},
+				success : function(data){
+					
+					console.log(data);
+					data = eval(data);
+					var i = 0;
+							$(".spanEmpName")	   .html(data[i++]);
+							$(".spanEmpId")		   .html(data[i++]);
+							$(".spanEmpGender")    .html(data[i++]);
+							$(".spanEmpGrade")     .html(data[i++]);
+							$(".spanEmpTitle")     .html(data[i++]);
+							$(".spanEmpLocation")  .html(data[i++]);
+							$(".spanEmpDepartment").html(data[i++]);
+							$(".spanEmpMobile")    .html(data[i++]);
+							$(".spanEmpEmail")     .html(data[i++]);
+							
+					$.mobile.loading( 'hide');
+					
+				} 
+		
+		          });
+			});
 	</script>
 	</head>
 <body>
