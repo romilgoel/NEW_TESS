@@ -16,7 +16,7 @@
    			    bottom: 0;
     			width: 100%;
 			}
-			.ui-page { -webkit-backface-visibility: hidden; }
+			
 		</style>
 	</head>
 	<body>
@@ -69,9 +69,9 @@
 		
 	function onDeviceReady() {
 		$(document).bind("mobileinit", function(){
-			//$.mobile.defaultPageTransition   = 'none'
-			//$.mobile.defaultDialogTransition = 'none'
-			//$.mobile.buttonMarkup.hoverDelay = 0
+			$.mobile.defaultPageTransition   = 'none'
+			$.mobile.defaultDialogTransition = 'none'
+			$.mobile.buttonMarkup.hoverDelay = 0
 		});
 		document.addEventListener("pause", onPause, false);
 		document.addEventListener("resume", onResume, false);
