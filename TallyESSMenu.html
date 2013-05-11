@@ -22,14 +22,6 @@
 			}
 			.ui-page { -webkit-backface-visibility: hidden; }
 		</style>
-		<script>
-		$(document).bind("mobileinit", function(){
-			$("#empDashBoardButton").live("tap",function(event){
-				event.preventDefault();
-				document.location.href = "TallyESSMenu.html"";
-			});
-		});
-		</script>
 		
 	</head>
 	<body>
@@ -48,7 +40,7 @@
 			
 			<div class="ui-grid-solo">
 		           <div class="ui-block-a">
-		           		<a href="javascript:void(0)" id="empDashBoardButton" data-role="button" data-transition="fade" data-theme='a'  data-icon="grid" data-ajax="false">Dashboard</a>
+		           		<a href="EmpDashBoard.html" id="empDashBoardButton" data-role="button" data-transition="fade" data-theme='a'  data-icon="grid" data-ajax="false">Dashboard</a>
 		           </div>
 			</div>	
 			<div class="ui-grid-solo">
