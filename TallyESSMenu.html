@@ -9,6 +9,7 @@
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 		<!--<script type="text/javascript" charset="utf-8" src="cordova/cordova.js"></script> -->
+		
 		<style>
 			.ui-footer 
 			{
@@ -20,7 +21,7 @@
 			{
 				line-height:3;
 			}
-			.ui-page { -webkit-backface-visibility: hidden; }
+			
 		</style>
 		
 	</head>
@@ -85,5 +86,13 @@
 		<!-- /page -->
 	</body>
 </html>
-
+<script>
+document.addEventListener("deviceready", onDeviceReady, false);
+		
+	function onDeviceReady() 
+	{
+		$.mobile.defaultPageTransition   = 'none';
+		$.mobile.defaultDialogTransition = 'none';
+		$.mobile.buttonMarkup.hoverDelay = 0;
+	}
 </script>
