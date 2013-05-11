@@ -22,10 +22,11 @@
 			}
 		</style>
 		<script>
-		$("#empSearchLink").live("tap",function(event){
-			
-			alert("Here");
-			 event.preventDefault();
+		$(document).bind("mobileinit", function(){
+			$("#empDashBoardButton").live("tap",function(event){
+				event.preventDefault();
+				document.location.href = "TallyESSMenu.html"";
+			});
 		});
 		</script>
 		
@@ -37,7 +38,7 @@
 			<div data-role="header">
 				<a href="javascript:void(0)" data-role="button" data-icon="back" data-iconpos="notext" data-rel="back" data-ajax="false"></a>
 				<h1>Employee Dashboard</h1>
-				<a href="TallyESSMenu.html" data-role="button" data-icon="home" data-iconpos="notext" ></a>
+				<a href="EmpDashBoard.html" data-role="button" data-icon="home" data-iconpos="notext" ></a>
 				
 
 			</div>
@@ -46,7 +47,7 @@
 			
 			<div class="ui-grid-solo">
 		           <div class="ui-block-a">
-		           		<a href="EmpDashBoard.html" data-role="button" data-transition="fade" data-theme='a'  data-icon="grid" data-ajax="false">Dashboard</a>
+		           		<a href="javascript:void(0)" id="empDashBoardButton" data-role="button" data-transition="fade" data-theme='a'  data-icon="grid" data-ajax="false">Dashboard</a>
 		           </div>
 			</div>	
 			<div class="ui-grid-solo">
