@@ -53,6 +53,11 @@
     -->
 
         <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
+        
+        <gap:splash src="splash/android/splash_screen.png" gap:platform="android" gap:density="ldpi" />
+        <gap:splash src="splash/android/splash_screen.png" gap:platform="android" gap:density="mdpi" />
+        <gap:splash src="splash/android/splash_screen.png" gap:platform="android" gap:density="hdpi" />
+        <gap:splash src="splash/android/splash_screen.png" gap:platform="android" gap:density="xhdpi" />
     <!--
         <access origin="http://phonegap.com" />                    - allow any secure requests to http://phonegap.com/
         <access origin="http://phonegap.com" subdomains="true" />  - same as above, but including subdomains, such as http://build.phonegap.com/
