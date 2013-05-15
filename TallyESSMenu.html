@@ -39,7 +39,15 @@
 			
 			<div style="position:absolute; margin-top:auto; width:100%; top:15%;">
 			
-			<a href="EmpDashBoard.html" >Dashboard</a>
+			<a href="EmpDashBoard.html" >Dashboard1</a>
+			
+			<a href="#" id="link1" >Dashboard2</a>
+			
+			<a href="#" id="link2" >Dashboard3</a>
+			
+			<button id="button1">Button1</button>
+			<button id="button2">Button2</button>
+			
 			<div class="ui-grid-solo">
 		           <div class="ui-block-a">
 		           		<a href="EmpDashBoard.html" id="empDashBoardButton" data-role="button" data-transition="fade" data-theme='a'  data-icon="grid" data-ajax="false">Dashboard</a>
@@ -95,5 +103,22 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		$.mobile.defaultPageTransition   = 'none';
 		$.mobile.defaultDialogTransition = 'none';
 		$.mobile.buttonMarkup.hoverDelay = 0;
+		$("#link1").click(function(){
+			
+			alert(1);
+		});
+		
+		$("#link2").click(function(event){
+			event.preventDefault();
+			alert(2);
+		});
+		
+		$("#button1").click(function(event){
+			alert(1);
+		});
+		
+		$("#button2").click(function(event){
+			alert(2);
+		});
 	}
 </script>
