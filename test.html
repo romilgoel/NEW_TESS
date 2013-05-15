@@ -20,6 +20,9 @@
 		$.mobile.defaultPageTransition   = 'none';
 		$.mobile.defaultDialogTransition = 'none';
 		$.mobile.buttonMarkup.hoverDelay = 0;
+		var flag = localStorage["EmpListSavedFlag"] ;
+	if( flag != 1 )
+	{
 		$.ajax({
 				url : 	"https://bssqa1.tallysolutions.com/isrel45_00/modules/hrms/intranet/reports/GetCount.php",
 				data : {
@@ -33,8 +36,11 @@
 					alert("Error occured");
 				},
 				success : function(data){
-					console.log(data );
+					//console.log(data );
 					AllEmpNames = eval(data);
+					localStorage["empList"] = AllEmpNames;
+					localStorage["EmpListSavedFlag"] = 1;
+					console.log("Flag : "+localStorage["EmpListSavedFlag"]);
 					console.log(AllEmpNames );
 					
 					
@@ -49,8 +55,30 @@
 					
 				} 
 		
-		          });
-	}
+	    });
+	 }
+	 else
+	 {
+	  		//alert(localStorage["empList"]);
+	  		$.mobile.loading( 'show');
+	  		var str= "";
+	  		var dataArr = localStorage["empList"].split(",");
+	  		var count = 0;
+	  		var AllEmpNames = [[0,0]];
+	  		for( var i = 0; i < dataArr.length ;  )
+	  		{
+	  			AllEmpNames[count++] = new Array(dataArr[i++],dataArr[i++]);
+	  		}
+					for(var i = 0; i < AllEmpNames.length; i++ )
+					{
+						str += "<li data-filtertext='"+AllEmpNames[i][0]+"'><a href='#page2' class='classEmpList'>"+AllEmpNames[i][0]+"</a><input type='hidden' value='"+AllEmpNames[i][1]+"'/></li>";	
+					}
+					$(".EmpList").html(str);
+					$('.EmpList').listview('refresh');
+					//alert(AllEmpNames);
+					console.log(AllEmpNames);
+					$.mobile.loading( 'hide');
+	 }	}
 	
 	$(".classEmpList").live("click",function(){
 					//$(".spanEmpName").html($(this).next().val());
