@@ -109,11 +109,15 @@ SelfClaimPendingSubmission']    12
 			.ClassPendingCount
 			{
 				color : white;
-				background : red;
+				background : #fe5323;
 				font-weight : bold;
 				padding : 2px;
 				border-radius : 10px;
 				
+			}
+			.FloatRight
+			{
+				float : right;
 			}
 			
 			
@@ -122,7 +126,7 @@ SelfClaimPendingSubmission']    12
 	</head>
 	<body>
 			
-		<div data-role="page" id="page1">
+	<div data-role="page" id="page1">
 			
 			<div data-role="header">
 				<a href="javascript:void(0)" data-role="button" data-icon="back" data-iconpos="notext" data-rel="back" data-ajax="false"></a>
@@ -135,17 +139,17 @@ SelfClaimPendingSubmission']    12
 			<div data-role="collapsible-set" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
 
 	<div data-role="collapsible" data-collapsed="false">
-	<h3><span class="ClassPendingCount ClassMyAppraisalPending">00</span> My Appraisals</h3>
+	<h3> My Appraisals<span class="ClassPendingCount ClassMyAppraisalPending FloatRight">00</span></h3>
 		<div class="CountDiv">
+			
 			Pending Submission : <span class="SelfApprPendingCount">0</span><br/>
 			Pending Feedback Submission : <span class="SelfFeedbackPendingSub">0</span><br/>
 			Trip Claim Pending Submission  : <span class="SelfClaimPendingSub">0</span>
 		</div>	
-		</div>	
 	</div>
 	
 	<div data-role="collapsible">
-	<h3><span class="ClassPendingCount ClassPendingMyAppraisalAppr">00</span> My Applications Pending Appraisal</h3>
+	<h3><span class="ClassPendingCount ClassPendingMyAppraisalAppr FloatRight">00</span> My Applications Pending Appraisal</h3>
 	<div>
 Pending For Appraisal :      	<span class="ClgPendingAppraisal"></span><br/>
 Pending For Co-Appraisal:    	<span class="ClgPendingCoAppraisal"></span><br/>
@@ -156,17 +160,18 @@ Citation Pending Review : 		<span class="ClgPendingCitationReview"></span><br/>
 SBC Pending Approval : 			<span class="ClgPendingSbcApproval"></span><br/>
 Leave Pending Approval : 		<span class="ClgPendingLeaveApproval"></span><br/>
 Trip/Claim Pending Approval :   <span class="ClgPendingTripApproval"></span>
+
 			
 	</div>
 	<p>I'm the collapsible set content for section 2.</p>
 	</div>
 	
 	<div data-role="collapsible">
-	<h3><span class="ClassPendingCount ClassMyClgAppraisal">00</span> My Colleagues Appraisals</h3>
+	<h3> My Colleagues Appraisals<span class="ClassPendingCount ClassMyClgAppraisal FloatRight" >00</span></h3>
 	<p>No Data</p>
 	</div>
 	<div data-role="collapsible">
-	<h3><span class="ClassPendingCount ClassMyClgApplicationCount">00</span> My Colleagues Applications</h3>
+	<h3> My Colleagues Applications<span class="ClassPendingCount ClassMyClgApplicationCount FloatRight">00</span></h3>
 	<p>I'm the collapsible set content for section 2.</p>
 	</div>
 	
