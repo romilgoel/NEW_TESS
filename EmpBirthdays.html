@@ -53,24 +53,24 @@
 		
 		          });
 	          }
+	          
+	          $(".ClassGetBirthdays").live("click",function(){
+	          	alert(1);
+	          	onDeviceReady();
+	          });
 		</script>
 	</head>
 	<body>
 		
 		<div data-role="page">
 			 
-			<div data-role="header"><h1>BirthDays</h1></div>
+			<div data-role="header"><h1>B'Days</h1></div>
 			 
 			<div data-role="content">
 				
 				<ul data-role="listview" class="BirthDayList">
 					
-					<li data-icon="false"> <p class="ui-li-heading">Name</p>
-						<p class="ui-li-desc">
-						<b><span data-theme='a' class="spanEmpName">&nbsp;</span></b>
-						</p>
-				    </li>
-				
+				<li><a href="#" class="ClassGetBirthdays">Tap me if dont get thelist.</a></li>
 				</ul>
 				<button onclick="onDeviceReady()">Get Birthays</button>
 					
