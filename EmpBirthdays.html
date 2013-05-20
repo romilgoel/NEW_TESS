@@ -54,52 +54,6 @@
 		
 		          });
 	          }
-	          function getBirthDays()
-	          {
-	          	$.ajax({
-				url : 	"https://bssqa1.tallysolutions.com/isrel45_00/modules/hrms/intranet/reports/GetCount.php",
-				data : {
-							strUserEventID:103,
-							strBirthDayListSize : 10
-							
-					    },
-				beforeSend : function(){
-					$.mobile.loading( 'show');
-				},
-				error : function(){
-					alert("Error occured");
-				},
-				success : function(data){
-					console.log(data);
-					data = eval(data);
-					var i = 0;
-					var BirthdayStr = "";
-					var BirthDate = data[0][0];
-					BirthdayStr += "<li data-role='list-divider' role='heading'>"+data[0][0]+"</li>";
-					for( i = 0 ;i < data.length; i++)
-					{
-						if(BirthDate != data[i][0])
-						{
-							BirthDate = data[i][0];
-							BirthdayStr += "<li data-role='list-divider' role='heading'><p class='ui-li-desc'>"+data[i][0]+"</p></li>";
-						}
-							
-						BirthdayStr += "<li><a href='#'>"+data[i][1]+"</a></li>";
-							
-					}
-					$(".BirthDayList").html(BirthdayStr);
-					$('.BirthDayList').listview('refresh');
-					$.mobile.loading( 'hide');
-					
-				} 
-		
-		          });
-	          }
-	          
-	          $(".ClassGetBirthdays").live("click",function(){
-	          	alert(1);
-	          	getBirthDays();
-	          });
 		</script>
 	</head>
 	<body>
@@ -113,10 +67,7 @@
 				<ul data-role="listview" class="BirthDayList">
 					
 				</ul>
-				<button class="ClassGetBirthdays">Get Birthays</button>
-				<button class="ClassTestButton">Click Me!!!</button>
-					
-				
+			
 			</div>
 			
 			 
@@ -124,10 +75,3 @@
 
 	</body>
 </html>
-
-<script>
-$("#ClassTestButton").click(function(){
-	
-	alert(2);
-});
-</script>
