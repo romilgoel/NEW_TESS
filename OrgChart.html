@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <title>&nbsp;</title>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="cordova/cordova.js"></script>
+		<script>
+		
+		document.addEventListener("deviceready", onDeviceReady, false);
+ 			function onDeviceReady() 
+ 			{
+		    $.ajax({
+				url : 	"https://bssqa1.tallysolutions.com/isrel45_00/modules/hrms/intranet/reports/GetCount.php",
+				data : {
+							strUserEventID:104
+							
+					    },
+				beforeSend : function(){
+					$.mobile.loading( 'show');
+				},
+				error : function(){
+					alert("Error occured");
+				},
+				success : function(data){
+					console.log(data);
+					data = eval(data);
+					var i = 0;
+					var org_chart = "";
+					for( i = 0 ;i < data.length; i++)
+					{
+						
+							emp_name = data[i][1];
+							//org_chart += "<li data-role='list-divider' role='heading'><p class='ui-li-desc'>"+emp_name+"</p></li>";
+						
+							
+						org_chart  += "<li><a href='#'>"+emp_name+"</a></li>";
+							
+					}
+					$(".BirthDayList").html(BirthdayStr);
+					$('.BirthDayList').listview('refresh');
+					$.mobile.loading( 'hide');
+					
+				} 
+		
+		          });
+	          }
+		</script>
+	</head>
+	<body>
+		
+		<div data-role="page">
+			 
+			<div data-role="header"><h1>BirthDays</h1></div>
+			 
+			<div data-role="content">
+				
+				<ul data-role="listview" class="BirthDayList">
+					
+					<li data-icon="false"> <p class="ui-li-heading">Name</p>
+						<p class="ui-li-desc">
+						<b><span data-theme='a' class="spanEmpName">&nbsp;</span></b>
+						</p>
+				    </li>
+				
+				</ul>
+					
+				
+			</div>
+			
+			 
+		</div>
+
+	</body>
+</html>
