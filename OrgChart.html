@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <title>&nbsp;</title>
+	<title>&nbsp;</title>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +14,7 @@
 		document.addEventListener("deviceready", onDeviceReady, false);
  			function onDeviceReady() 
  			{
+ 				alert(1);
 		    $.ajax({
 				url : 	"https://bssqa1.tallysolutions.com/isrel45_00/modules/hrms/intranet/reports/GetCount.php",
 				data : {
@@ -38,10 +39,10 @@
 							//org_chart += "<li data-role='list-divider' role='heading'><p class='ui-li-desc'>"+emp_name+"</p></li>";
 						
 							
-						org_chart  += "<li><a href='#'>"+emp_name+"</a></li>";
+						org_chart  += "<li><a href='#' class='classParentEmp'>"+emp_name+"</a><input type='hidden' value="+data[i][0]+" class='classEmpId' /></li>";
 							
 					}
-					$(".BirthDayList").html(BirthdayStr);
+					$(".BirthDayList").html(org_chart);
 					$('.BirthDayList').listview('refresh');
 					$.mobile.loading( 'hide');
 					
@@ -49,6 +50,65 @@
 		
 		          });
 	          }
+	          
+	          $(".classParentEmp").live('click',function(){
+	          		
+	          		var thisObj = $(this);
+	          		var parentLI = $(this).closest("li");
+	          		var childList = parentLI.find("ul");
+	          		
+	          		if( childList.length == 0 )
+	          		{
+	          			var emp_id = parentLI.find(".classEmpId").val();
+	          				$.ajax({
+				url : 	"https://bssqa1.tallysolutions.com/isrel45_00/modules/hrms/intranet/reports/GetCount.php",
+				data : {
+							strUserEventID:105,
+							strEmpId : emp_id
+							
+					    },
+				beforeSend : function(){
+					$.mobile.loading( 'show');
+				},
+				error : function(){
+					alert("Error occured");
+				},
+				success : function(data){
+					console.log(data);
+					data = eval(data);
+					var i = 0;
+					var org_chart = "";
+					for( i = 0 ;i < data.length; i++)
+					{
+						
+							emp_name = data[i][1];
+							//org_chart += "<li data-role='list-divider' role='heading'><p class='ui-li-desc'>"+emp_name+"</p></li>";
+						
+							
+						org_chart  += "<li><a href='#' class='classParentEmp'>"+emp_name+"</a><input type='hidden' value="+data[i][0]+" class='classEmpId' /></li>";
+							
+					}
+					
+					thisObj.append("<ul data-role='listview' class='BirthDayList'>"+org_chart+"<ul>");
+					
+					thisObj.listview('refresh');
+					$.mobile.loading( 'hide');
+					
+				} 
+		
+		          });
+	          			
+	          		}
+	          		else
+	          		{
+	          			
+	          			alert("already there");
+	          		}
+	          		
+	          	
+	          		
+	          	
+	          });
 		</script>
 	</head>
 	<body>
