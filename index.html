@@ -13,7 +13,6 @@
 	document.addEventListener("deviceready", onDeviceReady, false);
 		
 	function onDeviceReady() {
-		alert("Device Ready");
 		$(document).bind("mobileinit", function(){
 			$.mobile.defaultPageTransition   = 'none';
 			$.mobile.defaultDialogTransition = 'none';
@@ -23,7 +22,6 @@
 		document.addEventListener("resume", onResume, false);
 		
 		$(".ClassSubmitButton").bind("touchstart",function(){
-			alert("Submit");
 			$("#formLoginId").submit();
 			
 		});
