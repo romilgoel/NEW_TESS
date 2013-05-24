@@ -29,7 +29,7 @@
 			</div>
 			
 			<div style="position: absolute; top:30%; width:100%; ">
-			<form name="formLogin" action="TallyESSMenu.html" method="post">
+			<form name="formLogin" id="formLoginId" action="TallyESSMenu.html" method="post">
 			<!-- /header -->
 			<!-- Content    -->
 			<div data-role="content">
@@ -44,7 +44,7 @@
 						<input type='reset'  value="Reset"  data-role="button" data-theme="a"  />
 					</div>
 					<div class="ui-block-b">
-						<input type='submit' value="Submit" data-ajax="false" data-role="button" data-theme="a" data-transition="fade" />
+						<input type='button' class="ClassSubmitButton" value="Submit" data-ajax="false" data-role="button" data-theme="a" data-transition="fade" />
 					</div>	   
 				</div>
 				
@@ -75,6 +75,11 @@
 					});
 		document.addEventListener("pause", onPause, false);
 		document.addEventListener("resume", onResume, false);
+		
+		$(".ClassSubmitButton").bind("touchstart",function(){
+			$("#formLoginId").submit();
+			
+		});
 		//alert("Device is Ready");
 		/*	$.ajax({
 				url : 	"https://bssqa1.tallysolutions.com/isrel45_00/modules/hrms/intranet/reports/GetCount.php",
