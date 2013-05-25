@@ -14,7 +14,6 @@
 		document.addEventListener("deviceready", onDeviceReady, false);
  			function onDeviceReady() 
  			{
- 				alert(1);
 		    $.ajax({
 				url : 	"https://bssqa1.tallysolutions.com/isrel45_00/modules/hrms/intranet/reports/GetCount.php",
 				data : {
@@ -39,10 +38,10 @@
 							//org_chart += "<li data-role='list-divider' role='heading'><p class='ui-li-desc'>"+emp_name+"</p></li>";
 						
 							
-						org_chart  += "<li><a href='#' class='classParentEmp'>"+emp_name+"</a><input type='hidden' value="+data[i][0]+" class='classEmpId' /></li>";
+						org_chart  += "<li data-icon='plus'><a href='#' class='classParentEmp'>"+emp_name+"</a><input type='hidden' value="+data[i][0]+" class='classEmpId' /></li>";
 							
 					}
-					$(".BirthDayList").html(org_chart);
+					$(".BirthDayList").html("<ul data-role='listview' >"+org_chart+"</ul>");
 					$('.BirthDayList').listview('refresh');
 					$.mobile.loading( 'hide');
 					
@@ -85,7 +84,7 @@
 							//org_chart += "<li data-role='list-divider' role='heading'><p class='ui-li-desc'>"+emp_name+"</p></li>";
 						
 							
-						org_chart  += "<li><a href='#' class='classParentEmp'>"+emp_name+"</a><input type='hidden' value="+data[i][0]+" class='classEmpId' /></li>";
+						org_chart  += "<li data-icon='plus'><a href='#' class='classParentEmp'>"+emp_name+"</a><input type='hidden' value="+data[i][0]+" class='classEmpId' /></li>";
 							
 					}
 					
@@ -115,7 +114,7 @@
 		
 		<div data-role="page">
 			 
-			<div data-role="header"><h1>BirthDays</h1></div>
+			<div data-role="header"><h1>Org Chart</h1></div>
 			 
 			<div data-role="content">
 				
