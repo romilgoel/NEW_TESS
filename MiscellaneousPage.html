@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <title>&nbsp;</title>
+	<title>&nbsp;</title>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +8,9 @@
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-		<!--<script type="text/javascript" charset="utf-8" src="cordova/cordova.js"></script> -->
+		<!-- <script type="text/javascript" charset="utf-8" src="cordova/cordova.js"></script> -->
+		
+
 		<style>
 			.ui-footer 
 			{
@@ -20,11 +22,63 @@
 			{
 				line-height:3;
 			}
-			.ui-page { -webkit-backface-visibility: hidden; }
 		</style>
+		
+	<script>
+	$(".classInOutTiming").live("click",function()
+	{
+
+		$.ajax({
+				url : 	"https://bssqa1.tallysolutions.com/isrel45_00/modules/hrms/intranet/reports/GetCount.php",
+				data : {
+							strUserEventID:106,
+							strEmpId:613
+					    },
+				beforeSend : function(){
+					$.mobile.loading( 'show');
+				},
+				error : function(){
+					alert("Error occured");
+				},
+				success : function(InOutTime){
+					console.log(InOutTime );
+					InOutTime = eval(InOutTime);
+					
+					var str= "";
+					for(var i = 0; i < InOutTime.length; i++ )
+					{
+					
+				
+						//str += "<li data-filtertext='"+AllEmpNames[i][0]+"'><a href='#page2' class='classEmpList'>"+AllEmpNames[i][0]+"</a><input type='hidden' value='"+AllEmpNames[i][1]+"'/></li>";
+						str += "<li data-icon='false'>";
+						str += "<p class='ui-li-aside'>"+InOutTime[i][4]+"</p>";
+						str += "<p class='ui-li-heading'><h2>"+InOutTime[i][0]+"</h2></p>";
+						str += "<p class='ui-li-desc'>";
+						str += "<b><span data-theme='a'>In :</span></b>"+(InOutTime[i][1].replace(/^\s+|\s+$/g,'') == '' ? "--" : InOutTime[i][1]);
+						str += "<b><span data-theme='a'> Out :</span></b>"+(InOutTime[i][2].replace(/^\s+|\s+$/g,'') == '' ? "--" : InOutTime[i][2]);
+						str += "<b><span data-theme='a'> Hours :</span></b>"+(InOutTime[i][3].replace(/^\s+|\s+$/g,'') == '' ? "--" : InOutTime[i][3]);
+						str += "</p></li>";
+						//str += "<br/>In Time : "+ (InOutTime[i][1].replace(/^\s+|\s+$/g,'') == '' ? "--" : InOutTime[i][1]);
+						//str += "<br/>Out Time : "+(InOutTime[i][2].replace(/^\s+|\s+$/g,'') == '' ? "--" : InOutTime[i][2]);
+						//str += "<br/>Hours : "+(InOutTime[i][3].replace(/^\s+|\s+$/g,'') == '' ? "--" : InOutTime[i][3]);
+						//str += "<br/>Status : "+InOutTime[i][4];	
+					}
+					$("#InOutTime").html(str);
+					$('#InOutTime').listview('refresh');
+					
+					$.mobile.loading( 'hide');
+					
+				} 
+		
+		          });
+	
+	});
+	
+		</script>
 		
 	</head>
 	<body>
+
 		<!-- Start of first page I -->
 		<div data-role="page" id="page1">
 			<!-- Header -->
@@ -36,15 +90,9 @@
 
 			</div>
 			
-			<div style="position:absolute; margin-top:auto; width:100%; top:15%;">
-			
-			<div class="ui-grid-solo">
-		           <div class="ui-block-a">
-		           		<a href="#page2" data-role="button" data-transition="fade" data-theme='a'  data-icon="grid" data-ajax="false">In-Out Timings</a>
-		           </div>
-			</div>
-			</div>
-			
+			       		<a href="#page2" class="classInOutTiming" data-role="button" data-theme='a'  data-ajax="false" data-icon="grid">In-Out Timings</a>
+			       		
+		    
 			<!-- /footer -->
 		</div>
 		
@@ -53,24 +101,19 @@
 			<!-- Header -->
 			<div data-role="header">
 				<a href="javascript:void(0)" data-role="button" data-icon="back" data-iconpos="notext" data-rel="back" data-ajax="false"></a>
-				<h1>Misc.</h1>
+				<h1>In Out Timings</h1>
 				<a href="TallyESSMenu.html" data-role="button" data-icon="home" data-iconpos="notext" ></a>
 				
 
 			</div>
 			
-			<div style="position:absolute; margin-top:auto; width:100%; top:15%;">
-			
-			<div class="ui-grid-solo">
-		           <div class="ui-block-a">
-		           		<a href="#page2" data-role="button" data-transition="fade" data-theme='a'  data-icon="grid" data-ajax="false">Dashboard</a>
-		           </div>
-			</div>
-			</div>
+			<ul data-role="listview" data-inset="true" id="InOutTime">
+			</ul>
 			
 			<!-- /footer -->
 		</div>
 		<!-- /page -->
+					       	
 	</body>
 </html>
 
