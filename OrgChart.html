@@ -41,7 +41,7 @@
 						org_chart  += "<li data-icon='plus'><a href='#' class='classParentEmp'>"+emp_name+"</a><input type='hidden' value="+data[i][0]+" class='classEmpId' /></li>";
 							
 					}
-					$(".BirthDayList").html("<ul data-role='listview' >"+org_chart+"</ul>");
+					$(".BirthDayList").html(org_chart);
 					$('.BirthDayList').listview('refresh');
 					$.mobile.loading( 'hide');
 					
