@@ -46,7 +46,7 @@
 					var str= "";
 					for(var i = 0; i < AllEmpNames.length; i++ )
 					{
-						str += "<li data-filtertext='"+AllEmpNames[i][0]+"'><a href='#page2' class='classEmpList'>"+AllEmpNames[i][0]+"</a><input type='hidden' value='"+AllEmpNames[i][1]+"'/></li>";	
+						str += "<li data-filtertext='"+AllEmpNames[i][0]+"'><a href='#' class='classEmpList'>"+AllEmpNames[i][0]+"</a><input type='hidden' value='"+AllEmpNames[i][1]+"'/></li>";	
 					}
 					$(".EmpList").html(str);
 					$('.EmpList').listview('refresh');
@@ -82,6 +82,7 @@
 	
 	$(".classEmpList").live("click",function(){
 					//$(".spanEmpName").html($(this).next().val());
+					window.location.href = "#page2";
 					
 			 $.ajax({
 				url : 	"https://bssqa1.tallysolutions.com/isrel45_00/modules/hrms/intranet/reports/GetCount.php",
