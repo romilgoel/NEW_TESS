@@ -34,18 +34,18 @@
 					$(".ClassMyAppraisalPending").html( data[1] + data[2] );
 					
 					// For Colleague
-$(".ClgPendingAppraisal")     .html(data[3]);
-$(".ClgPendingCoAppraisal")   .html(data[4]);
-$(".ClgPendingRatification")  .html(data[5]);
-$(".ClgPendingAudit")         .html(data[6]);
-$(".ClgPendingSelfObjReiew")  .html(data[7]);
-$(".ClgPendingCitationReview").html(data[8]);
-$(".ClgPendingSbcApproval")   .html(data[9]);
-$(".ClgPendingLeaveApproval") .html(data[10]);
-$(".ClgPendingTripApproval")  .html(data[11]);
+                    $(".ClgPendingAppraisal")     .html(data[3]);
+                    $(".ClgPendingCoAppraisal")   .html(data[4]);
+                    $(".ClgPendingRatification")  .html(data[5]);
+                    $(".ClgPendingAudit")         .html(data[6]);
+                    $(".ClgPendingSelfObjReiew")  .html(data[7]);
+                    $(".ClgPendingCitationReview").html(data[8]);
+                    $(".ClgPendingSbcApproval")   .html(data[9]);
+                    $(".ClgPendingLeaveApproval") .html(data[10]);
+                    $(".ClgPendingTripApproval")  .html(data[11]);
 
-var totalCount = Number(data[3])+Number(data[4])+Number(data[5])+Number(data[6])+Number(data[7])+Number(data[8])+Number(data[9])+Number(data[10])+Number(data[11]);
-$(".ClassPendingMyAppraisalAppr").html( totalCount );
+                    var totalCount = Number(data[3])+Number(data[4])+Number(data[5])+Number(data[6])+Number(data[7])+Number(data[8])+Number(data[9])+Number(data[10])+Number(data[11]);
+                    $(".ClassPendingMyAppraisalAppr").html( totalCount );
 
 /*					
 WorkStreamsSponsorCount']       0
@@ -135,48 +135,59 @@ SelfClaimPendingSubmission']    12
 
 			</div>
 			
-			<div data-role="collapsible-set" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+			<div data-role="content">
+				
+				<div data-role="collapsible-set" data-theme="a" data-content-theme="d" data-inset="false" class="ui-collapsible-set" data-inset="false">
+				<div data-role="collapsible" class="ui-collapsible" data-collapsed="false">
+					<h2 class="ui-collapsible-heading">My Appraisals</h2>
 
-	<div data-role="collapsible" data-collapsed="false">
-	<h3> My Appraisals<span class="ClassPendingCount ClassMyAppraisalPending FloatRight">00</span></h3>
-		<div class="CountDiv">
-			
-			Pending Submission : <span class="SelfApprPendingCount">0</span><br/>
-			Pending Feedback Submission : <span class="SelfFeedbackPendingSub">0</span><br/>
-			Trip Claim Pending Submission  : <span class="SelfClaimPendingSub">0</span>
-		</div>	
-	</div>
-	
-	<div data-role="collapsible">
-	<h3><span class="ClassPendingCount ClassPendingMyAppraisalAppr FloatRight">00</span> My Applications Pending Appraisal</h3>
-	<div>
-Pending For Appraisal :      	<span class="ClgPendingAppraisal"></span><br/>
-Pending For Co-Appraisal:    	<span class="ClgPendingCoAppraisal"></span><br/>
-Pending For Ratification :   	<span class="ClgPendingRatification"></span><br/>
-Pending For Audit : 		 	<span class="ClgPendingAudit"></span><br/>
-Self-Objective Oending Review : <span class="ClgPendingSelfObjReiew"></span><br/>
-Citation Pending Review : 		<span class="ClgPendingCitationReview"></span><br/>
-SBC Pending Approval : 			<span class="ClgPendingSbcApproval"></span><br/>
-Leave Pending Approval : 		<span class="ClgPendingLeaveApproval"></span><br/>
-Trip/Claim Pending Approval :   <span class="ClgPendingTripApproval"></span>
+
+					<ul data-role="listview" class="ui-listview">
+						<li data-icon="arrow-r" data-iconpos="right" data-theme="d" ><a  class="ui-link-inherit">Pending Submission<span class="SelfApprPendingCount ui-li-count ui-btn-up-c ui-btn-corner-all">0</span></a></li>
+						<li data-icon="arrow-r" data-iconpos="right" data-theme="d" ><a  class="ui-link-inherit">Pending Feedback Submission<span class="SelfFeedbackPendingSub ui-li-count ui-btn-up-c ui-btn-corner-all">0</span></a></li>
+						<li data-icon="arrow-r" data-iconpos="right" data-theme="d" ><a  class="ui-link-inherit">Trip Claim Pending Submission<span class="SelfClaimPendingSub ui-li-count ui-btn-up-c ui-btn-corner-all">0</span></a></li>
+					</ul>
+				</div>
+				<div data-role="collapsible" class="ui-collapsible ui-collapsible-collapsed">
+					<h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed">My Applications Pending Appraisal</h2>
+
+					<ul data-role="listview" data-theme="d" data-divider-theme="d" class="ui-listview">
+						<li data-icon="arrow-r" data-iconpos="right" data-theme="d" ><a  class="ui-link-inherit">Pending For Appraisal<span class="ClgPendingAppraisal ui-li-count ui-btn-up-c ui-btn-corner-all">12</span></a></li>
+						<li data-icon="arrow-r" data-iconpos="right" data-theme="d" ><a  class="ui-link-inherit">Pending For Co-Appraisal<span class="ClgPendingCoAppraisal ui-li-count ui-btn-up-c ui-btn-corner-all">0</span></a></li>
+						<li data-icon="arrow-r" data-iconpos="right" data-theme="d" ><a  class="ui-link-inherit">Pending For Ratification<span class="ClgPendingRatification ui-li-count ui-btn-up-c ui-btn-corner-all">12</span></a></li>
+						<li data-icon="arrow-r" data-iconpos="right" data-theme="d" ><a  class="ui-link-inherit">Pending For Audit<span class="ClgPendingAudit ui-li-count ui-btn-up-c ui-btn-corner-all">12</span></a></li>
+						<li data-icon="arrow-r" data-iconpos="right" data-theme="d" ><a  class="ui-link-inherit">Self-Objective Pending Review<span class="ClgPendingSelfObjReiew ui-li-count ui-btn-up-c ui-btn-corner-all">12</span></a></li>
+						<li data-icon="arrow-r" data-iconpos="right" data-theme="d" ><a  class="ui-link-inherit">Citation Pending Review<span class="ClgPendingCitationReview ui-li-count ui-btn-up-c ui-btn-corner-all">12</span></a></li>
+						<li data-icon="arrow-r" data-iconpos="right" data-theme="d" ><a  class="ui-link-inherit">SBC Pending Approval<span class="ClgPendingSbcApproval ui-li-count ui-btn-up-c ui-btn-corner-all">12</span></a></li>
+						<li data-icon="arrow-r" data-iconpos="right" data-theme="d" ><a  class="ui-link-inherit">Leave Pending Approval<span class="ClgPendingLeaveApproval ui-li-count ui-btn-up-c ui-btn-corner-all">12</span></a></li>
+						<li data-icon="arrow-r" data-iconpos="right" data-theme="d" ><a  class="ui-link-inherit">Trip/Claim Pending Approval<span class="ClgPendingTripApproval ui-li-count ui-btn-up-c ui-btn-corner-all">12</span></a></li>
+					</ul>
+				</div>
+				
+				<div data-role="collapsible" class="ui-collapsible ui-collapsible-collapsed">
+					<h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed">My Colleagues Appraisals</h2>
+
+					<ul data-role="listview" data-theme="d" data-divider-theme="d" class="ui-listview">
+						
+						<li data-icon="arrow-r" data-iconpos="right" data-theme="d" ><a  class="ui-link-inherit">Pending<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">0</span></a></li>
+					</ul>
+				</div>
+				
+				<div data-role="collapsible" class="ui-collapsible ui-collapsible-collapsed">
+					<h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed">My Colleagues Applications</h2>
+
+					<ul data-role="listview" data-theme="d" data-divider-theme="d" class="ui-listview">
+						
+						<li data-icon="arrow-r" data-iconpos="right" data-theme="d" ><a  class="ui-link-inherit">Pending<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">0</span></a></li>
+					</ul>
+				</div>
+
+
+			</div>
 
 			
-	</div>
-	<p>I'm the collapsible set content for section 2.</p>
-	</div>
-	
-	<div data-role="collapsible">
-	<h3> My Colleagues Appraisals<span class="ClassPendingCount ClassMyClgAppraisal FloatRight" >00</span></h3>
-	<p>No Data</p>
-	</div>
-	<div data-role="collapsible">
-	<h3> My Colleagues Applications<span class="ClassPendingCount ClassMyClgApplicationCount FloatRight">00</span></h3>
-	<p>Nothing to display</p>
-	</div>
-	
-	
-		</div>
-			
+			</div>
+
 			<div data-role="footer">
 				<h4>&copy; 2013 Tally</h4>
 			</div>
