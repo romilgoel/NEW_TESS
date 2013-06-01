@@ -44,7 +44,7 @@
 						
 						org_chart  += "<div data-role='collapsible' class='ui-collapsible classParentEmp'>"
 						              +"<h2 class='ui-collapsible-heading classHeaderEmp'>"+emp_name+"</h2>"
-									  +"<div class='classTest'><input type='hidden' value="+data[i][0]+" class='classEmpId' /><input type='hidden' value=0 class='classChildLoadedFlag' /></div></div>";
+									  +"<div class='classTest'><input type='hidden' value="+data[i][0]+" class='classEmpId' /><input type='hidden' value=0 class='classChildLoadedFlag' /><input type='hidden' value=1 class='classColleagueCount' /></div></div>";
 							
 					}
 					$(".OrgChartContainer").html(org_chart);
@@ -64,7 +64,7 @@
 	          		//var parentLI = $(this).closest("li");
 	          		//var childList = parentLI.find("ul");
 	          		
-	          		if( thisObj.find(".classChildLoadedFlag").val() == 0 )
+	          		if( thisObj.find(".classChildLoadedFlag").val() == 0 && thisObj.find(".classColleagueCount").val() != 0 )
 	          		{
 	          			var emp_id = thisObj.find(".classEmpId").val();
 	          				$.ajax({
@@ -97,9 +97,19 @@
 						
 							
 						//org_chart  += "<li data-icon='plus'><a href='#' class='classParentEmp'>"+emp_name+"</a><input type='hidden' value="+data[i][0]+" class='classEmpId' /></li>";
-						org_chart  += "<div data-role='collapsible' class='ui-collapsible ui-collapsible-inset classParentEmp' data-mini='true'>"
-						              +"<h2 class='ui-collapsible-heading classHeaderEmp' >"+emp_name+grade_n_clg_str+"</h2>"
-									  +"<div class='classTest'><input type='hidden' value="+data[i][0]+" class='classEmpId' /><input type='hidden' value=0 class='classChildLoadedFlag' /></div></div>";
+						if(Number(emp_colleague_count) == 0  )
+						{
+							org_chart  += "<div data-role='collapsible' class='ui-collapsible ui-collapsible-inset classParentEmp' data-mini='true' data-collapsed-icon='minus'>"
+						               +  "<h2 class='ui-collapsible-heading classHeaderEmp' >"+emp_name+grade_n_clg_str+"</h2>"
+									   +  "<div class='classTest'><input type='hidden' value="+data[i][0]+" class='classEmpId' /><input type='hidden' value=0 class='classChildLoadedFlag' /><input type='hidden' value="+emp_colleague_count+" class='classColleagueCount' /></div></div>";
+						}
+						else
+						{
+							org_chart  += "<div data-role='collapsible' class='ui-collapsible ui-collapsible-inset classParentEmp' data-mini='true'>"
+						               +  "<h2 class='ui-collapsible-heading classHeaderEmp' >"+emp_name+grade_n_clg_str+"</h2>"
+									   +  "<div class='classTest'><input type='hidden' value="+data[i][0]+" class='classEmpId' /><input type='hidden' value=0 class='classChildLoadedFlag' /><input type='hidden' value="+emp_colleague_count+" class='classColleagueCount' /></div></div>";	
+						}
+						
 					    		
 					}
 					org_chart  += "</div>";
