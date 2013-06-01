@@ -90,12 +90,15 @@
 					{
 						
 							emp_name = data[i][1];
+							emp_grade           = data[i][3];
+							emp_colleague_count = data[i][4];
+							grade_n_clg_str     = (Number(emp_colleague_count) == 0 ? " ("+emp_grade+") " : " ("+emp_grade+"/"+emp_colleague_count +") " );
 							//org_chart += "<li data-role='list-divider' role='heading'><p class='ui-li-desc'>"+emp_name+"</p></li>";
 						
 							
 						//org_chart  += "<li data-icon='plus'><a href='#' class='classParentEmp'>"+emp_name+"</a><input type='hidden' value="+data[i][0]+" class='classEmpId' /></li>";
 						org_chart  += "<div data-role='collapsible' class='ui-collapsible ui-collapsible-inset classParentEmp' data-mini='true'>"
-						              +"<h2 class='ui-collapsible-heading classHeaderEmp' >"+emp_name+"</h2>"
+						              +"<h2 class='ui-collapsible-heading classHeaderEmp' >"+emp_name+grade_n_clg_str+"</h2>"
 									  +"<div class='classTest'><input type='hidden' value="+data[i][0]+" class='classEmpId' /><input type='hidden' value=0 class='classChildLoadedFlag' /></div></div>";
 					    		
 					}
@@ -124,6 +127,13 @@
 	          		
 	          	
 	          });
+	          $(".classEmpDetails").live("click",function(e){
+	          	
+	          	//e.stopPropagation();
+	          	e.preventDefault();
+	          	alert(1);
+	          	
+	          });
 		</script>
 	</head>
 	<body>
@@ -136,6 +146,7 @@
 				
 				<div data-role="collapsible-set" data-inset="false" class="OrgChartContainer" data-content-theme="c">
 				</div>
+				
 				
 			</div>
 			
