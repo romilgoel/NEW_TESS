@@ -80,7 +80,8 @@
 					$.mobile.loading( 'hide');
 	 }	}
 	
-	$(".classEmpList").live("tap",function(){
+	$(".classEmpList").live("vclick",function(e){
+				e.preventDefault();
 					//$(".spanEmpName").html($(this).next().val());
 					window.location.href = "#page2";
 					
@@ -110,8 +111,8 @@
 					console.log(data);
 					data = eval(data);
 					var i = 0;
-							$(".spanEmpName")	   .html(data[i++]);
-							$(".spanEmpId")		   .html(data[i++]);
+							$(".spanEmpName")      .html(data[i++]);
+							$(".spanEmpId")	       .html(data[i++]);
 							$(".spanEmpGender")    .html(data[i++]);
 							$(".spanEmpGrade")     .html(data[i++]);
 							$(".spanEmpTitle")     .html(data[i++]);
