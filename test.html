@@ -19,13 +19,43 @@
 		$.mobile.defaultPageTransition   = 'none';
 		$.mobile.defaultDialogTransition = 'none';
 		$.mobile.buttonMarkup.hoverDelay = 0;
-		var flag = localStorage["EmpListSavedFlag"] ;
-	if( flag != 1 )
+		ShowEmployeeNameInitials();
+	}
+	
+	function ShowEmployeeNameInitials()
 	{
+		var str= "";
+		var intTochar;
+		for(var i = 1; i <= 26; i++ )
+		{
+			intTochar = String.fromCharCode(i+64);
+			str += "<li data-filtertext='"+intTochar+"'><a href='#' class='classGetEmpListFromInitials'>"+intTochar+"</a><input type='hidden' class='classEmpIntial' value='"+intTochar+"'/></li>";	
+		}
+		$(".EmpInitialsList").html(str);
+		$('.EmpInitialsList').listview('refresh');
+	}
+	
+	$(".classGetEmpListFromInitials").live("vclick", function(){
+		
+		var charIntial = $(this).closest("li").find(".classEmpIntial").val();
+		//alert(charIntial);
+		GetEmployeeList(charIntial);
+		
+	});
+	
+	function GetEmployeeList( EmpNameInitial)
+	{
+		window.location.href = "#page2";
+					
+				var flag = localStorage["EmpListSavedFlag"] ;
+				flag = 0;
+     	if( flag != 1 )
+    	{
 		$.ajax({
 				url : 	"https://bssqa1.tallysolutions.com/isrel45_00/modules/hrms/intranet/reports/GetCount.php",
 				data : {
-							strUserEventID:101
+							strUserEventID    : 101,
+							strEmpNameInitial : EmpNameInitial
 							
 					    },
 				beforeSend : function(){
@@ -49,7 +79,16 @@
 						str += "<li data-filtertext='"+AllEmpNames[i][0]+"'><a href='#' class='classEmpList'>"+AllEmpNames[i][0]+"</a><input type='hidden' value='"+AllEmpNames[i][1]+"'/></li>";	
 					}
 					$(".EmpList").html(str);
-					$('.EmpList').listview('refresh');
+					if ( $('.EmpList').hasClass('ui-listview')) 
+					{
+				    	$('.EmpList').listview('refresh');
+    				} 
+					else 
+					{
+    					//$('.EmpList').trigger('create');
+    					$('.EmpList').trigger('refresh');
+     				}
+					//$('.EmpList').listview('refresh');
 					$.mobile.loading( 'hide');
 					
 				} 
@@ -69,22 +108,29 @@
 	  		{
 	  			AllEmpNames[count++] = new Array(dataArr[i++],dataArr[i++]);
 	  		}
-					//for(var i = 0; i < AllEmpNames.length; i++ )
 					for(var i = 0; i < AllEmpNames.length; i++ )
 					{
 						str += "<li data-filtertext='"+AllEmpNames[i][0]+"'><a href='#page2' class='classEmpList'>"+AllEmpNames[i][0]+"</a><input type='hidden' value='"+AllEmpNames[i][1]+"'/></li>";	
 					}
 					$(".EmpList").html(str);
-					$('.EmpList').listview('refresh');
+					if ( $('.EmpList').hasClass('ui-listview')) 
+					{
+				    	$('.EmpList').listview('refresh');
+    				} 
+					else 
+					{
+    					$('.EmpList').trigger('create');
+     				}
+					//$('.EmpList').listview('refresh');
 					//alert(AllEmpNames);
 					//console.log(AllEmpNames);
 					$.mobile.loading( 'hide');
-	 }	}
+	 }
+	}
 	
-	$(".classEmpList").live("vclick",function(e){
-				e.preventDefault();
+	$(".classEmpList").live("click",function(){
 					//$(".spanEmpName").html($(this).next().val());
-					window.location.href = "#page2";
+					window.location.href = "#page3";
 					
 			 $.ajax({
 				url : 	"https://bssqa1.tallysolutions.com/isrel45_00/modules/hrms/intranet/reports/GetCount.php",
@@ -112,8 +158,8 @@
 					console.log(data);
 					data = eval(data);
 					var i = 0;
-							$(".spanEmpName")      .html(data[i++]);
-							$(".spanEmpId")	       .html(data[i++]);
+							$(".spanEmpName")	   .html(data[i++]);
+							$(".spanEmpId")		   .html(data[i++]);
 							$(".spanEmpGender")    .html(data[i++]);
 							$(".spanEmpGrade")     .html(data[i++]);
 							$(".spanEmpTitle")     .html(data[i++]);
@@ -134,10 +180,24 @@
 <div data-role="page" id="page1">
 			<!-- Header -->
 			<div data-role="header">
-				<a href="#mypanel" data-icon="bars" data-role="button" data-corners="false" data-iconpos="notext"></a>
-				<!--<a href="javascript:void(0)" data-role="button" data-icon="back" data-iconpos="notext" data-rel="back" data-ajax="false"></a>-->
+				<a href="javascript:void(0)" data-role="button" data-icon="back" data-iconpos="notext" data-rel="back" data-ajax="false"></a>
 				<h1>Employee Search</h1>
-				<a href="../TallyESSMenu.html" data-icon="home" data-role="button" data-corners="false" data-iconpos="notext" ></a>
+				<a href="../TallyESSMenu.html" data-role="button" data-icon="home" data-iconpos="notext" ></a>
+			</div>
+			
+			<div data-role="content">
+			<ul data-role="listview" class="EmpInitialsList" data-filter="true" data-filter-placeholder="Search employee..." >
+			</ul>
+			</div>
+			<!-- /footer -->
+</div>
+	
+<div data-role="page" id="page2">
+			<!-- Header -->
+			<div data-role="header">
+				<a href="javascript:void(0)" data-role="button" data-icon="back" data-iconpos="notext" data-rel="back" data-ajax="false"></a>
+				<h1>Employee Search</h1>
+				<a href="../TallyESSMenu.html" data-role="button" data-icon="home" data-iconpos="notext" ></a>
 			</div>
 			
 			<div data-role="content">
@@ -145,9 +205,9 @@
 			</ul>
 			</div>
 			<!-- /footer -->
-		</div>
-		
-		<div data-role="page" id="page2">
+</div>
+	
+		<div data-role="page" id="page3">
 			<div data-role="header">
 				<a href="javascript:void(0)" data-role="button" data-icon="back" data-iconpos="notext" data-rel="back" data-ajax="false"></a>
 				<h1>Employee Details</h1>
