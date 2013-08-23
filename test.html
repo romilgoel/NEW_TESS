@@ -158,6 +158,7 @@
 					
 					console.log(data);
 					data = eval(data);
+					console.log(data);
 					var i = 0;
 							$(".spanEmpName")	   .html(data[i++]);
 							$(".spanEmpId")		   .html(data[i++]);
@@ -169,6 +170,7 @@
 							$(".spanEmpMobile")    .html("<a href='tel:"+data[i]+"'>"+data[i++]+"</a>");
 							$(".spanEmpEmail")     .html("<a href='mailto:"+data[i]+"'>"+data[i++]+"</a>");
 							$(".spanEmpImage")     .html(data[i++]);
+							$(".spanContAppr")     .html(data[i++]);
 							
 					$.mobile.loading( 'hide');
 					
@@ -287,8 +289,19 @@
 				<p class="ui-li-heading"><h2>Mobile</h2></p>
 				<p class="ui-li-desc">
 					<b><span data-theme='a' class="spanEmpMobile"></span></b>
+
 				</p>
 				 
+				</li>
+				
+				<li data-icon="false">
+					
+				<p class="ui-li-heading"><h2>Continuous Appraiser</h2></p>
+				<p class="ui-li-desc">
+					<b><span data-theme='a' class="spanContAppr"></span></b>
+
+				</p>
+	 
 				</li>
 				
 				<li data-icon="false">
