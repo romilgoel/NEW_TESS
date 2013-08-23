@@ -26,6 +26,7 @@
 	{
 		var str= "";
 		var intTochar;
+		
 		for(var i = 1; i <= 26; i++ )
 		{
 			intTochar = String.fromCharCode(i+64);
@@ -46,10 +47,11 @@
 	function GetEmployeeList( EmpNameInitial)
 	{
 		$(".EmpList").html("");
+		
 		window.location.href = "#page2";
 					
-				var flag = localStorage["EmpListSavedFlag"] ;
-				flag = 0;
+		var flag = localStorage["EmpListSavedFlag"] ;
+		flag = 0;
      	if( flag != 1 )
     	{
 		$.ajax({
@@ -60,7 +62,7 @@
 							
 					    },
 				beforeSend : function(){
-					$.mobile.loading( 'show');
+					$.mobile.loading('show');
 				},
 				error : function(){
 					alert("Error occured");
@@ -70,9 +72,6 @@
 					AllEmpNames = eval(data);
 					localStorage["empList"] = AllEmpNames;
 					localStorage["EmpListSavedFlag"] = 1;
-					console.log("Flag : "+localStorage["EmpListSavedFlag"]);
-					console.log(AllEmpNames );
-					
 					
 					var str= "";
 					for(var i = 0; i < AllEmpNames.length; i++ )
@@ -90,7 +89,7 @@
     					$('.EmpList').trigger('refresh');
      				}
 					//$('.EmpList').listview('refresh');
-					$.mobile.loading( 'hide');
+					$.mobile.loading('hide');
 					
 				} 
 		
@@ -150,6 +149,7 @@
 							$(".spanEmpLocation")  .html("");
 							$(".spanEmpMobile")    .html("");
 							$(".spanEmpEmail")     .html("");
+							$(".spanEmpImage")     .html("");
 				},
 				error : function(){
 					alert("Error occured");
@@ -168,6 +168,7 @@
 							$(".spanEmpDepartment").html(data[i++]);
 							$(".spanEmpMobile")    .html("<a href='tel:"+data[i]+"'>"+data[i++]+"</a>");
 							$(".spanEmpEmail")     .html("<a href='mailto:"+data[i]+"'>"+data[i++]+"</a>");
+							$(".spanEmpImage")     .html(data[i++]);
 							
 					$.mobile.loading( 'hide');
 					
@@ -180,14 +181,14 @@
 <body>
 <div data-role="page" id="page1">
 			<!-- Header -->
-			<div data-role="header">
+			<div data-role="header" data-position="fixed">
 				<a href="javascript:void(0)" data-role="button" data-icon="back" data-iconpos="notext" data-rel="back" data-ajax="false"></a>
 				<h1>Employee Search</h1>
 				<a href="../TallyESSMenu.html" data-role="button" data-icon="home" data-iconpos="notext" ></a>
 			</div>
 			
 			<div data-role="content">
-			<ul data-role="listview" class="EmpInitialsList" data-filter="true" data-filter-placeholder="Search employee..." >
+			<ul data-role="listview" class="EmpInitialsList" >
 			</ul>
 			</div>
 			<!-- /footer -->
@@ -195,7 +196,7 @@
 	
 <div data-role="page" id="page2">
 			<!-- Header -->
-			<div data-role="header">
+			<div data-role="header" data-position="fixed">
 				<a href="javascript:void(0)" data-role="button" data-icon="back" data-iconpos="notext" data-rel="back" data-ajax="false"></a>
 				<h1>Employee Search</h1>
 				<a href="../TallyESSMenu.html" data-role="button" data-icon="home" data-iconpos="notext" ></a>
@@ -209,7 +210,7 @@
 </div>
 	
 		<div data-role="page" id="page3">
-			<div data-role="header">
+			<div data-role="header" data-position="fixed">
 				<a href="javascript:void(0)" data-role="button" data-icon="back" data-iconpos="notext" data-rel="back" data-ajax="false"></a>
 				<h1>Employee Details</h1>
 				<a href="../TallyESSMenu.html" data-role="button" data-icon="home" data-iconpos="notext" ></a>
@@ -218,6 +219,20 @@
 			<div>
 				<ul data-role="listview" data-inset="true">
 				<li data-role="list-divider" role="heading">Employee Details</li>
+				<li data-icon="false">
+					<div class="ui-grid-a">
+						<div class="ui-block-a">
+							<p class="ui-li-heading"><h2>Name</h2></p>
+							<p class="ui-li-desc">
+							<b><span data-theme='a' class="spanEmpName">&nbsp;</span></b>
+							</p>
+						</div>
+						<div class="ui-block-b">
+							<span data-theme='a' class="spanEmpImage">&nbsp;</span>
+						</div>
+					</div>
+				</li>
+				
 				<li data-icon="false">
 				
 				<p class="ui-li-heading"><h2>Name</h2></p>
