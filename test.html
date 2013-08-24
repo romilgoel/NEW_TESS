@@ -23,6 +23,7 @@
 		ShowEmployeeNameInitials();
 	}
 	
+	
 	function ShowEmployeeNameInitials()
 	{
 		var str= "";
@@ -187,7 +188,8 @@
 					
 					data = eval(data);
 					var i = 0;
-							$(".spanEmpName")	   .html(data[i++]);
+					var empName = data[i++];
+							$(".spanEmpName")	   .html(empName);
 							$(".spanEmpId")		   .html(data[i++]);
 							$(".spanEmpGender")    .html(data[i++]);
 							$(".spanEmpGrade")     .html(data[i++]);
@@ -197,6 +199,7 @@
 							$(".spanEmpMobile")    .html("<a href='tel:"+data[i]+"'>"+data[i++]+"</a>");
 							$(".spanEmpEmail")     .html("<a href='mailto:"+data[i]+"'>"+data[i++]+"</a>");
 							$(".spanEmpImage")     .html(data[i++]);
+							$(".spanEmpImageFull") .html(data[i++]);
 							$(".spanContAppr")     .html(data[i++]);
 							
 					$.mobile.loading( 'hide');
@@ -206,6 +209,18 @@
 		          });
 			});
 	</script>
+	<style>
+		 #popupEmpImage-popup{
+    		right: 5%;
+    		left: 5%;
+    		width: 90%;
+		}
+		.spanEmpImageFull img
+		{
+			width:100%;
+		}
+		</style>
+	</head>
 	</head>
 <body>
 <div data-role="page" id="page1">
@@ -261,8 +276,10 @@
 							<b><span data-theme='a' class="spanEmpId"></span></b>
 							</p>
 						</div>
-						<div class="ui-block-b" style="text-align: right;">
-							<span data-theme='a' class="spanEmpImage">&nbsp;</span>
+						<div class="ui-block-b classEmpImage" style="text-align: right;" >
+							<a href='#popupEmpImage' data-rel="popup" >
+								<span data-theme='a' class="spanEmpImage">&nbsp;</span>
+							</a>
 						</div>
 					</div>
 				</li>
@@ -342,8 +359,18 @@
 					
 				
 			</ul>
-			</div>	
+			</div>
+				
+			<div data-role="popup" id="popupEmpImage" data-overlay-theme="a" data-theme="c" >
+				<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+				<div data-role="header" role='banner' class='ui-corner-top ui-header ui-bar-a'>
+					<h1 class="spanEmpName"></h1>
+				</div>
+				<div data-theme='a' class="spanEmpImageFull" style="width: 100%">&nbsp;</div>
 		</div>
+		</div>
+		
+
 
 </body>
 </html>
